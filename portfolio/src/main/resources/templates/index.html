@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Portfolio</title>
+</head>
+<body>
+
+<h2>My Portfolio</h2>
+
+<form action="/save" method="post" enctype="multipart/form-data">
+    Name: <input type="text" name="name"><br><br>
+    College: <input type="text" name="college"><br><br>
+    CGPA: <input type="text" name="cgpa"><br><br>
+    Skills: <input type="text" name="skills"><br><br>
+
+    Photo: <input type="file" name="photoFile"><br><br>
+    Resume: <input type="file" name="resumeFile"><br><br>
+
+    <button type="submit">Save</button>
+</form>
+
+<hr>
+
+<h3>Saved Profiles</h3>
+
+<div th:each="p : ${profiles}">
+    <p>Name: <span th:text="${p.name}"></span></p>
+    <p>College: <span th:text="${p.college}"></span></p>
+    <p>CGPA: <span th:text="${p.cgpa}"></span></p>
+    <p>Skills: <span th:text="${p.skills}"></span></p>
+
+    <img th:src="${p.photo}" width="100"><br>
+    <a th:href="${p.resume}" target="_blank">View Resume</a>
+
+    <hr>
+</div>
+
+</body>
+</html>
